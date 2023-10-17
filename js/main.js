@@ -2,8 +2,12 @@ const domNumbers = document.getElementById("domNumbers");
 const domPlay = document.getElementById("domPlay");
 const domResult = document.getElementById("domResult");
 
+//tempo per rispondere in s
+const gameTime = 2;
+
 domPlay.addEventListener("click", startGame);
 
+//generatore numeri casuali
 function getRandomNumbers(numbersAmount) {
   const arr = [];
   for (let i = 0; arr.length < numbersAmount; i++) {
@@ -12,10 +16,10 @@ function getRandomNumbers(numbersAmount) {
       arr.push(tempNum);
     }
   }
-  console.log(arr.join(" - "));
   return arr;
 }
 
+// logica gioco
 function startGame() {
   domPlay.disabled = true;
   const randomNumbers = getRandomNumbers(5);
@@ -34,14 +38,11 @@ function startGame() {
     const guessedNumbers = [];
     for (let i = 0; i < 5; i++) {
       const tempNumber = randomNumbers[i];
-      console.log(tempNumber);
-      console.log(randomNumbers);
       if (userNumbers.includes(tempNumber)) {
         guessedNumbers.push(tempNumber);
       }
     }
     domResult.textContent = `Hai indovinato ${guessedNumbers.length} numero/i: ${guessedNumbers.join(" - ")}`;
-    console.log(randomNumbers, userNumbers, guessedNumbers);
     domPlay.disabled = false;
-  }, 3000);
+  }, gameTime * 1000);
 }
