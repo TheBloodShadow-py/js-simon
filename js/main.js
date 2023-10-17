@@ -26,12 +26,10 @@ function startGame() {
   const userNumbers = [];
   domNumbers.textContent = `Hai 30 secondi da ora per memorizzare questi numeri! ${randomNumbers.join(" - ")}`;
   setTimeout(() => {
-    const num1 = parseInt(prompt());
-    const num2 = parseInt(prompt());
-    const num3 = parseInt(prompt());
-    const num4 = parseInt(prompt());
-    const num5 = parseInt(prompt());
-    userNumbers.push(num1, num2, num3, num4, num5);
+    for (let i = 0; i < 5; i++) {
+      const tempNum = parseInt(prompt());
+      userNumbers.push(tempNum);
+    }
     if (!userNumbers) {
       return;
     }
