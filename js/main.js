@@ -28,6 +28,9 @@ function startGame() {
   setTimeout(() => {
     for (let i = 0; i < 5; i++) {
       const tempNum = parseInt(prompt());
+      if (isNaN(tempNum || !tempNum)) {
+        return;
+      }
       userNumbers.push(tempNum);
     }
     if (!userNumbers) {
